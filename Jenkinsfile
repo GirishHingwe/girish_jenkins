@@ -1,5 +1,7 @@
 pipeline {
-    agent docker-alpine-python // Requires a Jenkins node/agent with Docker and Python 3 installed
+     agent {
+        label 'docker-alpine-python'
+    }
 
     environment {
         // Define a unique container name to avoid conflicts with concurrent builds
