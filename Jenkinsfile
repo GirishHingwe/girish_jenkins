@@ -38,7 +38,15 @@ pipeline {
                     args '-v /dev/shm:/dev/shm' // Prevents browser crashing from low memory
                 }
             }
-        }
+              steps {
+                    echo 'Running Selenium Tests...'
+                    sh '''
+                    cd myapp
+                    . venv/bin/activate
+                    pytest
+                    '''
+            }
+    }
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
